@@ -1,0 +1,6 @@
+import { createClient } from '@supabase/supabase-js';
+
+const supabaseUrl = 'https://<SEU-PROJETO>.supabase.co'; // 🔁 substitua aqui
+const supabaseAnonKey = '<SUA-CHAVE-ANONIMA>';           // 🔁 substitua aqui
+
+export const supabase = createClient(supabaseUrl, supabaseAnonKey);

@@ -1,0 +1,33 @@
+import { useParams } from 'react-router-dom'
+
+export default function PropertyView() {
+  const { id } = useParams()
+
+  // Em uma app real, você buscaria do banco via API
+  const property = {
+    id,
+    title: 'Apartamento no Centro',
+    price: 320000,
+    location: 'São Paulo - SP',
+    description: 'Apartamento completo com 2 quartos e varanda',
+  }
+
+  return (
+    <div className="p-6">
+      <h1 className="text-2xl font-bold">{property.title}</h1>
+      <p className="text-gray-600 mb-2">{property.location}</p>
+      <p className="text-orange-600 font-bold mb-4">R$ {property.price.toLocaleString()}</p>
+      <p>{property.description}</p>
+
+      <iframe
+        className="w-full mt-6 h-64 border rounded"
+        src={`https://www.google.com/maps?q=${encodeURIComponent(
+          property.location
+        )}&output=embed`}
+        loading="lazy"
+        allowFullScreen
+        title="Google Maps"
+      ></iframe>
+    </div>
+  )
+}

@@ -1,0 +1,17 @@
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import LeadsList from './LeadsList';
+import LeadForm from './LeadForm';
+import LeadDetails from './LeadDetails';
+
+const LeadsRoutes = () => {
+  return (
+    <Routes>
+      <Route index element={<LeadsList />} />
+      <Route path="new" element={<LeadForm />} />
+      <Route path=":id" element={<LeadDetails />} />
+    </Routes>
+  );
+};
+
+export default LeadsRoutes;

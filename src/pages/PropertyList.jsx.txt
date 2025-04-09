@@ -1,0 +1,42 @@
+import { Link } from 'react-router-dom'
+
+const mockProperties = [
+  {
+    id: 1,
+    title: 'Apartamento no Centro',
+    price: 320000,
+    location: 'São Paulo - SP',
+  },
+  {
+    id: 2,
+    title: 'Casa com 3 quartos',
+    price: 470000,
+    location: 'Campinas - SP',
+  },
+]
+
+export default function PropertyList() {
+  return (
+    <div className="p-6">
+      <h1 className="text-2xl font-bold mb-4">Imóveis Cadastrados</h1>
+      <ul className="space-y-4">
+        {mockProperties.map((p) => (
+          <li
+            key={p.id}
+            className="border p-4 rounded hover:bg-gray-100 transition"
+          >
+            <h2 className="text-lg font-semibold">{p.title}</h2>
+            <p className="text-sm text-gray-600">{p.location}</p>
+            <p className="text-orange-600 font-bold">R$ {p.price.toLocaleString()}</p>
+            <Link
+              to={`/properties/${p.id}`}
+              className="text-blue-500 underline mt-2 inline-block"
+            >
+              Ver detalhes
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}

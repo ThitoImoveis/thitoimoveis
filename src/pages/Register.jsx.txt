@@ -1,0 +1,81 @@
+import { useState } from 'react';
+import { supabase } from '../../services/supabaseClient';
+import { useNavigate } from 'react-router-dom';
+
+export default function Register() {
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    password: '',
+    cpf_cnpj: '',
+    creci: '',
+    iptu: '',
+    user_type: 'comprador',
+  });
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Criação no Supabase Auth
+    const { data: authData, error: authError } = await supabase.auth.signUp({
+      email: form.email,
+      password: form.password,
+    });
+
+    if (authError) {
+      setError(authError.message);
+      return;
+    }
+
+    // Registro extra no banco (tabela users)
+    const { error: insertError } = await supabase
+      .from('users')
+      .insert([
+        {
+          name: form.name,
+          email: form.email,
+          cpf_cnpj: form.cpf_cnpj,
+          creci: form.creci,
+          iptu: form.iptu,
+          user_type: form.user_type,
+        },
+      ]);
+
+    if (insertError) {
+      setError(insertError.message);
+    } else {
+      navigate('/login');
+    }
+  };
+
+  return (
+    <div>
+      <h2>Cadastro</h2>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+
+      <form onSubmit={handleSubmit}>
+        <input name="name" placeholder="Nome" onChange={handleChange} required />
+        <input name="email" type="email" placeholder="Email" onChange={handleChange} required />
+        <input name="password" type="password" placeholder="Senha" onChange={handleChange} required />
+        <input name="cpf_cnpj" placeholder="CPF ou CNPJ" onChange={handleChange} required />
+        <input name="creci" placeholder="CRECI (se corretor)" onChange={handleChange} />
+        <input name="iptu" placeholder="Inscrição IPTU (se proprietário)" onChange={handleChange} />
+
+        <select name="user_type" onChange={handleChange} required>
+          <option value="comprador">Comprador</option>
+          <option value="corretor">Corretor</option>
+          <option value="proprietario">Proprietário</option>
+          <option value="imobiliaria">Imobiliária</option>
+        </select>
+
+        <button type="submit">Cadastrar</button>
+      </form>
+    </div>
+  );
+}

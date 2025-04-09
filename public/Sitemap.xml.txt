@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url><loc>https://www.thitoimoveis.com.br/</loc></url>
+  <url><loc>https://www.thitoimoveis.com.br/login</loc></url>
+  <url><loc>https://www.thitoimoveis.com.br/register</loc></url>
+  <url><loc>https://www.thitoimoveis.com.br/profile</loc></url>
+
+  <!-- Imóveis -->
+  <url><loc>https://www.thitoimoveis.com.br/imoveis</loc></url>
+  <url><loc>https://www.thitoimoveis.com.br/imoveis/novo</loc></url>
+  <url><loc>https://www.thitoimoveis.com.br/imoveis/:id</loc></url>
+
+  <!-- Leads -->
+  <url><loc>https://www.thitoimoveis.com.br/leads</loc></url>
+  <url><loc>https://www.thitoimoveis.com.br/leads/novo</loc></url>
+  <url><loc>https://www.thitoimoveis.com.br/leads/:id</loc></url>
+
+  <!-- Analytics / Notificações -->
+  <url><loc>https://www.thitoimoveis.com.br/dashboard</loc></url>
+  <url><loc>https://www.thitoimoveis.com.br/notificacoes</loc></url>
+
+  <!-- Checkout / Publicação -->
+  <url><loc>https://www.thitoimoveis.com.br/checkout</loc></url>
+  <url><loc>https://www.thitoimoveis.com.br/publicar</loc></url>
+  <url><loc>https://www.thitoimoveis.com.br/favoritos</loc></url>
+
+  <!-- Legal -->
+  <url><loc>https://www.thitoimoveis.com.br/politica-de-privacidade</loc></url>
+  <url><loc>https://www.thitoimoveis.com.br/termos-de-uso</loc></url>
+
+</urlset>

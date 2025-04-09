@@ -1,0 +1,20 @@
+import { Link } from 'react-router-dom'
+
+export default function Dashboard() {
+  return (
+    <div className="p-6">
+      <h1 className="text-3xl font-bold mb-4">Painel do Usuário</h1>
+      <div className="space-y-4">
+        <Link to="/properties" className="block text-orange-600 underline">
+          ➤ Ver imóveis cadastrados
+        </Link>
+        <Link to="/properties/new" className="block text-orange-600 underline">
+          ➤ Cadastrar novo imóvel
+        </Link>
+        <Link to="/" className="block text-red-500 underline">
+          ➤ Sair
+        </Link>
+      </div>
+    </div>
+  )
+}
